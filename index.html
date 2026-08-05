@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Strength Gauge</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="auth-card">
+        <h2>Sign Up</h2>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <div class="password-container">
+                <input 
+                    type="password" 
+                    id="password" 
+                    placeholder=" " 
+                    required
+                    minlength="8"
+                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{8,}"
+                >
+                <div class="gauge-wrapper">
+                    <div class="gauge-bar"></div>
+                    <span class="gauge-text"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
