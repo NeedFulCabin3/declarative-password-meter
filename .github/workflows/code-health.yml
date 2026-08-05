@@ -1,0 +1,28 @@
+name: Code Health Check
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: HTML Validation
+        uses: CyberspaceSociology/html-validator-action@v1
+        with:
+          files: 'index.html'
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Stylelint Check
+        run: |
+          npx stylelint "style.css" --config-basedir . --rules '{"color-no-invalid-hex": true, "block-no-empty": true}'
