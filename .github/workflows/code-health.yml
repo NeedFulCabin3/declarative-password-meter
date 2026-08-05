@@ -1,4 +1,4 @@
-name: Code Health Check
+name: Code-Health Check
 
 on:
   push:
