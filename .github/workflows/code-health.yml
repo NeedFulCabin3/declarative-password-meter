@@ -13,15 +13,13 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: HTML Validation
-        uses: CyberspaceSociology/html-validator-action@v1
-        with:
-          files: 'index.html'
-
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
+
+      - name: HTML Validation
+        run: npx html-validate index.html
 
       - name: Stylelint Check
         run: |
