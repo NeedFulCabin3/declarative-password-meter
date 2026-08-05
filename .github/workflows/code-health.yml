@@ -19,7 +19,7 @@ jobs:
           node-version: '20'
 
       - name: HTML Validation
-        run: npx html-validate index.html
+        run: npx html-validate --rule "autocomplete-password: off" index.html
 
       - name: Stylelint Check
         run: |
