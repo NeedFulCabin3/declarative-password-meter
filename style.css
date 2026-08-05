@@ -1,0 +1,135 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, sans-serif;
+}
+
+body {
+    background-color: #fcf8ee;
+    color: #f8fafc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.auth-card {
+    background-color: #9cc2ff;
+    padding: 2rem;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 360px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    margin-bottom: 1.5rem;
+    font-size: 1.25rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+label {
+    font-size: 0.875rem;
+    color: #cbe1ff;
+}
+
+.password-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+input[type="password"] {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #2259da;
+    border: 1px solid #12c20c;
+    border-radius: 6px;
+    color: #f8fafc;
+    font-size: 1rem;
+    outline: none;
+}
+
+input[type="password"]:focus {
+    border-color: #6366f1;
+}
+
+/* Gauge default / Weak State */
+.gauge-bar {
+    height: 4px;
+    width: 100%;
+    background-color: #334155;
+    border-radius: 2px;
+    position: relative;
+}
+
+.gauge-bar::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 33%;
+    background-color: #ef4444;
+    border-radius: 2px;
+    transition: width 0.3s ease, background-color 0.3s ease;
+}
+
+.gauge-text {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #ef4444;
+    display: block;
+    margin-top: 0.25rem;
+}
+
+.gauge-text::before {
+    content: 'Weak';
+}
+
+/* Empty State */
+.password-container:has(input:placeholder-shown) .gauge-bar::before {
+    width: 0%;
+}
+
+.password-container:has(input:placeholder-shown) .gauge-text {
+    color: #cbe1ff;
+}
+
+.password-container:has(input:placeholder-shown) .gauge-text::before {
+    content: 'Enter a password';
+}
+
+/* Medium State (User has interacted, typing, but not fully satisfying the complex regex) */
+.password-container:has(input:not(:placeholder-shown):user-invalid) .gauge-bar::before {
+    width: 66%;
+    background-color: #f59e0b;
+}
+
+.password-container:has(input:not(:placeholder-shown):user-invalid) .gauge-text {
+    color: #f59e0b;
+}
+
+.password-container:has(input:not(:placeholder-shown):user-invalid) .gauge-text::before {
+    content: 'Medium';
+}
+
+/* Strong State (Matches the full complexity pattern layout) */
+.password-container:has(input:valid) .gauge-bar::before {
+    width: 100%;
+    background-color: #10b981;
+}
+
+.password-container:has(input:valid) .gauge-text {
+    color: #10b981;
+}
+
+.password-container:has(input:valid) .gauge-text::before {
+    content: 'Strong';
+}
