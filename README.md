@@ -46,7 +46,7 @@ You don't need local node setups or terminal commands to run or inspect this pro
 ├── .github/
 │   └── workflows/
 │       └── validation.yml   # W3C structural and syntax validation pipeline
-├── index.html               # Signup card markup containing input regex constraints[cite: 1]
+├── index.html               # Signup card markup containing input regex constraints
 ├── style.css                # Style rules, state transitions, and meter mechanics
 ├── .gitignore               # System file ignores
 └── LICENSE                  # MIT License
